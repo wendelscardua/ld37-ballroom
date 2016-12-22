@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        source.volume = PlayerPrefs.GetFloat("Music Volume", 1.0f);
         source.Play();
     }
 	

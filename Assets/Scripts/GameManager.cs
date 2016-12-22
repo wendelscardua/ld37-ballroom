@@ -8,13 +8,15 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     public GameObject[] ballPrefabs;
     public GameObject spawnPoint;
-    public float spawnTime = 10.0f;
+    private float spawnTime;
     public float victoryCooldown = 20.0f;
-    private float spawnCooldown = 10.0f;
+    private float spawnCooldown;
     private int balls = 5;
 
     // Use this for initialization
     void Start() {
+        spawnTime = PlayerPrefs.GetFloat("Spawn Time", 10.0f);
+        spawnCooldown = spawnTime;
         UpdateScore();
     }
 
