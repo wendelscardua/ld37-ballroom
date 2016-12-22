@@ -13,6 +13,7 @@ public class BallDestroyer : MonoBehaviour {
     {
         if (other.CompareTag("Ball"))
         {
+            other.tag = "ZombieBall";
             StartCoroutine(WaitAndDestroy(other, 1.0f));
         }
     }
@@ -20,6 +21,7 @@ public class BallDestroyer : MonoBehaviour {
     private IEnumerator WaitAndDestroy(Collider ball, float time)
     {
         yield return new WaitForSecondsRealtime(time);
+        ball.gameObject.SetActive(false);
         Destroy(ball);
         gameManager.BallDestroyed();
     }
