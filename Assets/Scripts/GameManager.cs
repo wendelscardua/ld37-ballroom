@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -9,27 +10,8 @@ public class GameManager : MonoBehaviour {
     public GameObject spawnPoint;
     public float spawnTime = 10.0f;
     public float victoryCooldown = 20.0f;
-    public static GameManager instance;
     private float spawnCooldown = 10.0f;
     private int balls = 5;
-
-    void Awake()
-    {
-        //Check if instance already exists
-        if (instance == null)
-
-            //if not, set instance to this
-            instance = this;
-
-        //If instance already exists and it's not this:
-        else if (instance != this)
-
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);
-
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
-    }
 
     // Use this for initialization
     void Start() {
@@ -51,7 +33,7 @@ public class GameManager : MonoBehaviour {
             victoryCooldown -= Time.deltaTime;
             if (victoryCooldown <= 0.0f)
             {
-                Application.Quit();
+                SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             }
         }
         UpdateScore();

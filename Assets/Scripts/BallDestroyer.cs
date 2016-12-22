@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallDestroyer : MonoBehaviour {
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
@@ -15,6 +21,6 @@ public class BallDestroyer : MonoBehaviour {
     {
         yield return new WaitForSecondsRealtime(time);
         Destroy(ball);
-        GameManager.instance.BallDestroyed();
+        gameManager.BallDestroyed();
     }
 }

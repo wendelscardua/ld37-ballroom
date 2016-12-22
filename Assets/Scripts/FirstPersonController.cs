@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -25,9 +26,9 @@ public class FirstPersonController : MonoBehaviour {
 	void Update () {
         if (Input.GetButton("Cancel"))
         {
-            Application.Quit();
+            SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
         }
-        
+
         // Look
         float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, rotLeftRight, 0);
