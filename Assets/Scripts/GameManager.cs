@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
             victoryCooldown -= Time.deltaTime;
             if (victoryCooldown <= 0.0f)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             }
         }

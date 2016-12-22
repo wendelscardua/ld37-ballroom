@@ -26,6 +26,8 @@ public class FirstPersonController : MonoBehaviour {
 	void Update () {
         if (Input.GetButton("Cancel"))
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
         }
 
